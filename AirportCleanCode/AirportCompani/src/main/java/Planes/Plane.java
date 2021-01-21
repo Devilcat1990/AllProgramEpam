@@ -63,7 +63,7 @@ public class Plane {
     @Override
     public String toString() {
         return  "   Тип самолета: " + type +
-                ";  Название модели= " + nameModelPlane +
+                ";  Название модели: " + nameModelPlane +
                 ";  \nМаксимальная скорость=" + maxSpeedPlane +
                 ";  Потирбление горючего=" + fuelConsumptionPlane;
     }

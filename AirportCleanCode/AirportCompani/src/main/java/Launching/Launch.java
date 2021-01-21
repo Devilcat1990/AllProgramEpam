@@ -2,9 +2,11 @@ package Launching;
 
 import Airport.Airport;
 import Planes.CargoPlane;
+import Planes.FighterPlane;
 import Planes.PasengersPlane;
 import Planes.TypePlane;
 
+import static CheckInput.CheckInputValuesInteger.InputValuesInt;
 import static Launching.MenuProgram.menu;
 
 public class Launch {
@@ -13,7 +15,10 @@ public class Launch {
         Airport airport=new Airport("Просвет");
         airport.setToListAirportPlane(new CargoPlane("c-40", 500, 600, TypePlane.CivilPane, 2000));
         airport.setToListAirportPlane(new PasengersPlane("Boing-740", 600, 500, TypePlane.CivilPane, 500));
-        airport.setToListAirportPlane(new PasengersPlane("Boing-500", 400, 300, TypePlane.MilitaryPlane, 300));
+        airport.setToListAirportPlane(new PasengersPlane("Boing-500", 400, 300, TypePlane.CivilPane, 300));
+        airport.setToListAirportPlane(new FighterPlane("F-15", 800, 450, TypePlane.MilitaryPlane, 10));
+        airport.setToListAirportPlane(new CargoPlane("c-47", 450, 650, TypePlane.MilitaryPlane, 1500));
+        airport.setToListAirportPlane(new FighterPlane("Raptor-1", 760, 600, TypePlane.MilitaryPlane, 12));
         boolean exit = true;
         do {
             switch (menu()) {
@@ -27,8 +32,12 @@ public class Launch {
                     System.out.println("Общая вместимость пасажиров в Авиокомпании ="+airport.getTotalQuantityPassengerPlane());
                     break;
                 case 4:
-                    System.out.println("Самолеты в диапозоне потребления горючего от до : ");
-                    airport.getToPrintPlaneInTheRange(450,700);
+                    System.out.println("Введите первую координату диапозона расхода топлива: ");
+                    int firstCordRange=InputValuesInt();
+                    System.out.println("Введите вторую координату диапозана расхода топлива: ");
+                    int secondCordRange=InputValuesInt();
+                    System.out.printf("Самолеты в диапозоне потребления горючего от %d до %d",firstCordRange,secondCordRange);
+                    airport.getToPrintPlaneInTheRange(firstCordRange,secondCordRange);
                     break;
                 case 5:
                     airport.sortAirportListSpeed();
