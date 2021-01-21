@@ -1,60 +1,71 @@
 package Planes;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Plane {
-    private int quantityPassengerPlane;
-    private int capacityCargoPlaneTon;
+    //================Fields========================
+    private String nameModelPlane;
     private int maxSpeedPlane;
     private int fuelConsumptionPlane;
+    private TypePlane type;
+    //==============Constructor=====================
 
-    public int getQuantityPassengerPlane() {
-        return quantityPassengerPlane;
+    public Plane(String nameModelPlane, int maxSpeedPlane, int fuelConsumptionPlane, TypePlane type) {
+        this.nameModelPlane = nameModelPlane;
+        this.maxSpeedPlane = maxSpeedPlane;
+        this.fuelConsumptionPlane = fuelConsumptionPlane;
+        this.type = type;
     }
 
-    public int getCapacityCargoPlane() {
-        return capacityCargoPlaneTon;
+    //============Method====================
+
+    public String getNameModelPlane() {
+        return nameModelPlane;
+    }
+
+    public void setNameModelPlane(String nameModelPlane) {
+        this.nameModelPlane = nameModelPlane;
     }
 
     public int getMaxSpeedPlane() {
         return maxSpeedPlane;
     }
 
-    public int getFuelConsumptionPlane() {
-        return fuelConsumptionPlane;
-    }
-
-    public void setQuantityPassengerPlane(int quantityPassengerPlane) {
-        this.quantityPassengerPlane = quantityPassengerPlane;
-    }
-
-    public void setCapacityCargoPlane(int capacityCargoPlane) {
-        this.capacityCargoPlaneTon = capacityCargoPlane;
-    }
-
     public void setMaxSpeedPlane(int maxSpeedPlane) {
         this.maxSpeedPlane = maxSpeedPlane;
+    }
+
+    public int getFuelConsumptionPlane() {
+        return fuelConsumptionPlane;
     }
 
     public void setFuelConsumptionPlane(int fuelConsumptionPlane) {
         this.fuelConsumptionPlane = fuelConsumptionPlane;
     }
 
-    public Plane(int quantityPassengerPlane, int capacityCargoPlane, int maxSpeedPlane, int fuelConsumptionPlane) {
-        this.quantityPassengerPlane = quantityPassengerPlane;
-        this.capacityCargoPlaneTon = capacityCargoPlane;
-        this.maxSpeedPlane = maxSpeedPlane;
-        this.fuelConsumptionPlane = fuelConsumptionPlane;
+    public TypePlane getType() {
+        return type;
     }
+
+    public void setType(TypePlane type) {
+        this.type = type;
+    }
+    public static class speedPlaneComparator implements Comparator<Plane>
+    {
+        @Override
+        public int compare(Plane o1, Plane o2) {
+            return o1.getMaxSpeedPlane()- o2.getMaxSpeedPlane();
+        }
+    }
+    //=========toString and equals==============
 
     @Override
     public String toString() {
-        return "Plane{" +
-                "quantityPassengerPlane=" + quantityPassengerPlane +
-                ", capacityCargoPlane=" + capacityCargoPlaneTon +
-                ", maxSpeedPlane=" + maxSpeedPlane +
-                ", fuelConsumptionPlane=" + fuelConsumptionPlane +
-                '}';
+        return  "   Тип самолета: " + type +
+                ";  Название модели= " + nameModelPlane +
+                ";  \nМаксимальная скорость=" + maxSpeedPlane +
+                ";  Потирбление горючего=" + fuelConsumptionPlane;
     }
 
     @Override
@@ -62,14 +73,14 @@ public class Plane {
         if (this == o) return true;
         if (!(o instanceof Plane)) return false;
         Plane plane = (Plane) o;
-        return quantityPassengerPlane == plane.quantityPassengerPlane &&
-                capacityCargoPlaneTon == plane.capacityCargoPlaneTon &&
-                maxSpeedPlane == plane.maxSpeedPlane &&
-                fuelConsumptionPlane == plane.fuelConsumptionPlane;
+        return maxSpeedPlane == plane.maxSpeedPlane &&
+                fuelConsumptionPlane == plane.fuelConsumptionPlane &&
+                Objects.equals(nameModelPlane, plane.nameModelPlane) &&
+                type == plane.type;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(quantityPassengerPlane, capacityCargoPlaneTon, maxSpeedPlane, fuelConsumptionPlane);
+        return Objects.hash(nameModelPlane, maxSpeedPlane, fuelConsumptionPlane, type);
     }
 }

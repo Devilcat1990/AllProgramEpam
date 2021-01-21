@@ -1,3 +1,10 @@
+Planes\PasengersPlane.class
+Planes\Plane$speedPlaneComparator.class
 Launching\Launch.class
+Planes\BomberPlane.class
+Planes\CargoPlane.class
+Planes\FighterPlane.class
 Planes\Plane.class
-AllComparator\quantityPassengerPlaneComparator.class
+Planes\TypePlane.class
+Launching\MenuProgram.class
+Airport\Airport.class
